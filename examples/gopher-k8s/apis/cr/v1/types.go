@@ -20,36 +20,42 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-const ExampleResourcePlural = "examples"
+// Thank you for Asta Xie invite me to Gopher meetup!
+// In return, I will invite Asta Xie into Kubernetes, literally.
+const AstaXieResourcePlural = "astaxies"
 
+// +k8s:deepcopy-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-type Example struct {
+type AstaXie struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata"`
-	Spec              ExampleSpec   `json:"spec"`
-	Status            ExampleStatus `json:"status,omitempty"`
+	// Describes Asta Xie
+	Spec AstaXieSpec `json:"spec"`
+	// Status of Asta Xie
+	Status AstaXieStatus `json:"status,omitempty"`
 }
 
-type ExampleSpec struct {
-	Foo string `json:"foo"`
-	Bar bool   `json:"bar"`
+type AstaXieSpec struct {
+	Language string `json:"language"`
+	Handsome bool   `json:"handsome"`
 }
 
-type ExampleStatus struct {
-	State   ExampleState `json:"state,omitempty"`
+type AstaXieStatus struct {
+	State   AstaXieState `json:"state,omitempty"`
 	Message string       `json:"message,omitempty"`
 }
 
-type ExampleState string
+type AstaXieState string
 
 const (
-	ExampleStateCreated   ExampleState = "Created"
-	ExampleStateProcessed ExampleState = "Processed"
+	AstaXieStateInvited  AstaXieState = "Invited"
+	AstaXieStateAccepted AstaXieState = "Accepted"
 )
 
+// +k8s:deepcopy-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-type ExampleList struct {
+type AstaXieList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata"`
-	Items           []Example `json:"items"`
+	Items           []AstaXie `json:"items"`
 }

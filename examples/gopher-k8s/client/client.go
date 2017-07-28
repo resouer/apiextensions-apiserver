@@ -21,7 +21,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/serializer"
 	"k8s.io/client-go/rest"
 
-	crv1 "k8s.io/apiextensions-apiserver/examples/client-go/apis/cr/v1"
+	crv1 "k8s.io/apiextensions-apiserver/examples/gopher-k8s/apis/cr/v1"
 )
 
 func NewClient(cfg *rest.Config) (*rest.RESTClient, *runtime.Scheme, error) {
