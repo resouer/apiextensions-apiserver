@@ -1,10 +1,10 @@
 apiVersion: "cr.client-go.k8s.io/v1"
 kind: AstaXie
 metadata:
-  name: xieda1
+  name: 
 spec:
-  languange: "Golang"
-  handsome: true
+  language:
+  handsome: 
 status:
   state: "Invited"
-  message: "Invited, not accepted yet
+  message: ""

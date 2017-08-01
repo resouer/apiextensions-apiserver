@@ -67,7 +67,7 @@ func (c *AstaXieController) Run(stopCh <-chan struct{}) error {
 
 func (c *AstaXieController) onAdd(obj interface{}) {
 	astaXie := obj.(*crv1.AstaXie)
-	fmt.Printf("[CONTROLLER] OnAdd %s\n", astaXie.ObjectMeta.SelfLink)
+	fmt.Printf("[CONTROLLER] OnAdd %#v\n", astaXie)
 
 	// NEVER modify objects from the store. It's a read-only, local cache.
 	// You can use astaXieScheme.Copy() to make a deep copy of original object and modify this copy
@@ -79,10 +79,8 @@ func (c *AstaXieController) onAdd(obj interface{}) {
 	}
 
 	astaXieCopy := copyObj.(*crv1.AstaXie)
-	astaXieCopy.Status = crv1.AstaXieStatus{
-		State:   crv1.AstaXieStateAccepted,
-		Message: "Asta Xie successfully accepted invitation and joined Kubernetes community!",
-	}
+
+	// TODO: set astaXieCopy.Status to crv1.AstaXieStateAccepted
 
 	err = c.AstaXieClient.Put().
 		Name(astaXie.ObjectMeta.Name).
@@ -94,6 +92,8 @@ func (c *AstaXieController) onAdd(obj interface{}) {
 
 	if err != nil {
 		fmt.Printf("ERROR updating status: %v\n", err)
+	} else {
+		fmt.Println("UPDATED astaXie object successfully ...")
 	}
 
 	// Fetch a list of our CRs

@@ -75,6 +75,8 @@ func main() {
 	// Start a controller on instances of our custom resource
 	wg.Go(func() error { return controller.Run(ctx.Done()) })
 
+	fmt.Println("Controller started successfully ...")
+
 	// Handle interrupt
 	term := make(chan os.Signal)
 	signal.Notify(term, os.Interrupt, syscall.SIGTERM)
