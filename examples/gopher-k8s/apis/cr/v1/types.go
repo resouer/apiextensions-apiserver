@@ -30,11 +30,15 @@ type AstaXie struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata"`
 	// TODO: Describes Asta Xie
+	Spec AstaXieSpec `json:"spec"`
 	// TODO: Status of Asta Xie
+	Status AstaXieStatus `json:"status,omitempty"`
 }
 
 // TODO: attributes of Asta Xie, with JSON parser
 type AstaXieSpec struct {
+	Language string `json:"language"`
+	Handsome bool   `json:"handsome"`
 }
 
 type AstaXieStatus struct {

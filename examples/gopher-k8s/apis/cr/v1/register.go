@@ -42,9 +42,9 @@ func Resource(resource string) schema.GroupResource {
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		// TODO: &object{}
-		"",
+		&AstaXie{},
 		// TODO: &objectList{}
-		"",
+		&AstaXieList{},
 	)
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil

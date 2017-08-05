@@ -81,6 +81,10 @@ func (c *AstaXieController) onAdd(obj interface{}) {
 	astaXieCopy := copyObj.(*crv1.AstaXie)
 
 	// TODO: set astaXieCopy.Status to crv1.AstaXieStateAccepted
+	astaXieCopy.Status = crv1.AstaXieStatus{
+		State:   crv1.AstaXieStateAccepted,
+		Message: "Asta Xie accepted Harry's invitation!",
+	}
 
 	err = c.AstaXieClient.Put().
 		Name(astaXie.ObjectMeta.Name).
